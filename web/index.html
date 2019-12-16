@@ -1,0 +1,33 @@
+<h1>Exemplo de streaming</h1>
+
+
+<!-- 
+https://aws.amazon.com/pt/solutions/video-on-demand-on-aws/
+-->
+
+<h2>video.js</h2>
+<link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+<script src="https://vjs.zencdn.net/7.2.3/video.js"></script>
+
+
+<video id="hls-example"  controls>
+  <source src="/hls/a4b55cea-2398-4230-8e9d-5096302c1487/hls/SampleVideo_1280x720_20mb.m3u8" type="application/x-mpegURL" />
+  Your browser does not support HTML5 video.
+</video>
+
+
+
+<script>
+
+  videojs.Hls.xhr.beforeRequest = function(options) {
+    
+    console.log(options.uri)
+
+    return options;
+  };
+
+  var player = videojs('hls-example');
+
+
+  // player.play();
+</script>

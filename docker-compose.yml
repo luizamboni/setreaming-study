@@ -1,0 +1,13 @@
+version: '3.7'
+services: 
+    nginx:
+        image: nginx
+        volumes:
+         - ./hls/:/streams/hls/ 
+         - ./web/:/usr/share/nginx/html
+         - ./nginx.conf:/etc/nginx/nginx.conf:ro
+        ports:
+         - "80:80"
+        environment:
+         - NGINX_PORT=80
+        command: [nginx-debug, '-g', 'daemon off;']
